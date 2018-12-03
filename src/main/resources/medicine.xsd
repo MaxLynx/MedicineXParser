@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+    <xs:element name="medicine">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="name" type="xs:string"></xs:element>
+                <xs:element name="pharm" type="xs:string"></xs:element>
+                <xs:element name="group" type="group"></xs:element>
+                <xs:element name="analogs">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="analog" type="xs:string" maxOccurs="unbounded" minOccurs="0"></xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="versions">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="version">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="name" type="word"></xs:element>
+                                        <xs:element name="manufacturers">
+                                            <xs:complexType>
+                                                <xs:sequence>
+                                                    <xs:element name="manufacturer" maxOccurs="unbounded" minOccurs="1">
+                                                        <xs:complexType>
+                                                            <xs:sequence>
+                                                                <xs:element name="certificate">
+                                                                    <xs:complexType>
+                                                                        <xs:attribute name="id" type="xs:ID"></xs:attribute>
+                                                                        <xs:attribute name="start-date" type="xs:date"></xs:attribute>
+                                                                        <xs:attribute name="end-date" type="xs:date"></xs:attribute>
+                                                                        <xs:attribute name="organization" type="xs:string"></xs:attribute>
+                                                                    </xs:complexType>
+                                                                </xs:element>
+                                                                <xs:element name="package">
+                                                                    <xs:complexType>
+                                                                        <xs:attribute name="type" type="xs:string"></xs:attribute>
+                                                                        <xs:attribute name="count" type="positiveInteger"></xs:attribute>
+                                                                        <xs:attribute name="price" type="positiveInteger"></xs:attribute>
+                                                                    </xs:complexType>
+                                                                </xs:element>
+                                                                <xs:element name="dosage">
+                                                                    <xs:complexType>
+                                                                        <xs:attribute name="one-dose" type="positiveInteger"></xs:attribute>
+                                                                        <xs:attribute name="day-dose" type="positiveInteger"></xs:attribute>
+                                                                    </xs:complexType>
+                                                                </xs:element>
+                                                            </xs:sequence>
+                                                        </xs:complexType>
+                                                    </xs:element>
+                                                </xs:sequence>
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:simpleType name="group" final="restriction" >
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="vitamins" />
+            <xs:enumeration value="anesthetic" />
+            <xs:enumeration value="antibiotic" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="positiveInteger" >
+        <xs:restriction base="xs:int">
+            <xs:minInclusive value="0"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="word">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[a-zA-Z]+"/>
+        </xs:restriction>
+    </xs:simpleType>
+</xs:schema>

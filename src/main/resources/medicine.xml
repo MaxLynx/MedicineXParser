@@ -1,0 +1,26 @@
+<medicine>
+    <name>Antroxilum</name>
+    <pharm>Bayer</pharm>
+    <group>vitamins</group>
+    <analogs>
+        <analog>Cerix</analog>
+        <analog>Cystrophanus</analog>
+    </analogs>
+    <versions>
+        <version>
+            <name>capsules</name>
+            <manufacturers>
+                <manufacturer>
+                    <certificate id="ID-12303" start-date="2017-06-12" end-date="2020-06-12" organization="Medico" />
+                    <package type="blister" count="8" price="16" />
+                    <dosage one-dose="1" day-dose="2" />
+                </manufacturer>
+                <manufacturer>
+                    <certificate id="ID-34500" start-date="2016-01-02" end-date="2020-01-02" organization="Suppra" />
+                    <package type="blister" count="16" price="30" />
+                    <dosage one-dose="1" day-dose="3" />
+                </manufacturer>
+            </manufacturers>
+        </version>
+    </versions>
+</medicine>
